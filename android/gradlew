@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Gradle wrapper entry. Requires gradle-wrapper.jar from a real Capacitor/Android Studio init.
+# Prefer: npx cap add android (merges) or Android Studio "Gradle wrapper" regenerate.
+DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ ! -f "$DIR/gradle/wrapper/gradle-wrapper.jar" ]; then
+  echo "gradle-wrapper.jar missing. Run from a machine with Android SDK:"
+  echo "  cd android && gradle wrapper --gradle-version 8.11.1"
+  echo "Or open the project in Android Studio to generate the wrapper."
+  exit 1
+fi
+exec java -jar "$DIR/gradle/wrapper/gradle-wrapper.jar" "$@"
